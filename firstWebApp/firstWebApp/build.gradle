@@ -29,3 +29,25 @@ java {
         languageVersion = JavaLanguageVersion.of(18)
     }
 }
+
+subprojects {
+    apply plugin: 'java'
+
+    version = '0.1'
+    group = 'com.andemar'
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    dependencies {
+        testImplementation 'junit:junit:4.13.2'
+    }
+}
+
+project(':appOne'){
+    dependencies {
+        implementation project (':appTwo')
+    }
+}
