@@ -11,6 +11,8 @@ plugins {
     id 'application'
     id 'war' //gradle war: Generate a war service
     id 'org.gretty' version '4.0.3' //gradle appRun: Run the service inside tomcat/jetty
+    id 'org.springframework.boot' version '2.7.11'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
 repositories {
@@ -20,7 +22,11 @@ repositories {
 }
 
 dependencies {
+    api 'org.springframework.boot:spring-boot-starter-data-jpa'
+    api 'org.springframework.boot:spring-boot-starter-web'
     compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '5.0.0-M2'
+    runtimeOnly 'mysql:mysql-connector-java:8.0.19'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
